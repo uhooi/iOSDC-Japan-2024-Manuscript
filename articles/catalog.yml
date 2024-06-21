@@ -1,5 +1,4 @@
 PREDEF:
-  - preface.re
 
 CHAPS:
   - article.re
@@ -7,4 +6,3 @@ CHAPS:
 APPENDIX:
 
 POSTDEF:
-  - contributors.re

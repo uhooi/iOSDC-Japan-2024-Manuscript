@@ -223,7 +223,7 @@ Text("Foo")
 
 === foreground_color
 
-@<code<{foregroundColor(_:)}は非推奨になったため、@<code<{foregroundStyle(_:)}を好むルールです。
+@<code>{foregroundColor(_:)}は非推奨になったため、@<code>{foregroundStyle(_:)}を好むルールです。
 
 //source[][]{
   # iOS 15.0+

@@ -10,5 +10,8 @@ articles/*.html
 articles/*.xml
 articles/*.txt
 
+*-pdf/
+
 # Bundler
+.bundle/
 /vendor/bundle

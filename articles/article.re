@@ -1,14 +1,14 @@
 =[nonum] SwiftLintのオレオレカスタムルール一覧
 
-#@# NOTE author:uhooi
-
 == はじめに
+
+こんにちは、ウホーイ（@<href>{https://x.com/the_uhooi, @the_uhooi}）です。
 
 SwiftLintで私が自作しているカスタムルールを紹介します。
 
 == 環境
 
-本稿の環境（2024/06/15現在）です。
+本稿の環境（2024/06/20現在）です。
 多少環境が異なっても同様の動作になると思いますが、もし動作が異なっていたらX（旧Twitter）などでご連絡くださると嬉しいです。
 
  * OS: macOS Sonoma 14.5 (23F79)
@@ -47,7 +47,7 @@ enum Foo {
 
 === final_class
 
-classに@<code>{final}を必ず付けるルールです。
+@<code>{class}に@<code>{final}を必ず付けるルールです。
 
 //source[][]{
   final_class:
@@ -116,29 +116,6 @@ ForEach(Array(monsters.↓enumerated()), id: \.element.id) { index, monster in
 }
 //}
 
-=== print
-
-@<code>{print()}より@<code>{Logger.debug()}を好むルールです。
-
-@<code>{Logger.debug()}は自作の関数なので、必要に応じてメッセージを変更してください。
-
-//source[][]{
-  print:
-    name: 'Print'
-    regex: '\bprint\([^)]*\)'
-    capture_group: 0
-    message: 'Prefer using `Logger.debug()` over `print()`'
-    severity: warning
-//}
-
-//source[][swift]{
-// Non Triggering Examples
-Logger.debug("Foo")
-
-// Triggering Examples
-↓print("Foo")
-//}
-
 === aspect_ratio_fill
 
 @<code>{.aspectRatio(contentMode: .fill)}より@<code>{.scaledToFill()}を好むルールです。
@@ -197,7 +174,7 @@ Image(systemName: "swift")
 
 === corner_radius
 
-@<code>{cornerRadius(_:antialiased:)}は非推奨になったため、@<code>{clipShape(_:style:)}または@<code>{fill(style:)}を好むルールです。
+@<code>{cornerRadius()}は非推奨になったため、@<code>{clipShape()}または@<code>{fill()}を好むルールです。
 
 @<code>{clipShape(RoundedRectangle(cornerRadius:))}に置き換えることが多いです。
 
@@ -264,11 +241,7 @@ Text("Foo")
 Text("Foo")
   .toolbar {
     ToolbarItem(placement: .topBarLeading) {
-      Button {
-        print("Bar")
-      } label: {
-        Text("Bar")
-      }
+      // Do something
     }
   }
 
@@ -276,11 +249,7 @@ Text("Foo")
 Text("Foo")
   .toolbar {
     ToolbarItem(placement: ↓.navigationBarLeading) {
-      Button {
-        print("Bar")
-      } label: {
-        Text("Bar")
-      }
+      // Do something
     }
   }
 //}
@@ -304,11 +273,7 @@ Text("Foo")
 Text("Foo")
   .toolbar {
     ToolbarItem(placement: .topBarTrailing) {
-      Button {
-        print("Bar")
-      } label: {
-        Text("Bar")
-      }
+      // Do something
     }
   }
 
@@ -316,39 +281,17 @@ Text("Foo")
 Text("Foo")
   .toolbar {
     ToolbarItem(placement: ↓.navigationBarTrailing) {
-      Button {
-        print("Bar")
-      } label: {
-        Text("Bar")
-      }
+      // Do something
     }
   }
-//}
-
-=== import_lottie
-
-@<href>{https://github.com/airbnb/lottie-ios, Lottie}のコンポーネントを直接使うより、自作の@<code>{UICore.LottieAnimationView}を好むルールです。
-
-私はできる限りサードパーティ製のライブラリをカプセル化したいため、このようなルールを自作しています。
-
-//source[][]{
-  import_lottie:
-    name: 'Import Lottie'
-    regex: '\bimport\s+(Lottie)\b'
-    capture_group: 1
-    message: 'Prefer using `UICore.LottieAnimationView` over Lottie components'
-    severity: warning
-//}
-
-//source[][swift]{
-// Non Triggering Examples
-import UICore
-
-// Triggering Examples
-import ↓Lottie
 //}
 
 == おわりに
 
 SwiftLintのカスタムルールは正規表現で書くので、慣れていないと難しいです。
-私も試行錯誤しながら書いたので、誤っていたり、よりいい書き方があればコメントしてくださると嬉しいです。
+私も試行錯誤しながら書いたので、誤りなどあればご連絡くださると嬉しいです。
+
+== 参考資料
+
+ * @<href>{https://github.com/uhooi/iOSDC-Japan-2024-Manuscript}
+ * @<href>{https://qiita.com/uhooi/items/9deb56416aaa81709f69, SwiftLintのオレオレカスタムルール一覧 - Qiita}

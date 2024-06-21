@@ -9,3 +9,9 @@ articles/*.html
 # articles/*.md
 articles/*.xml
 articles/*.txt
+
+*-pdf/
+
+# Bundler
+.bundle/
+/vendor/bundle

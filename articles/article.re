@@ -24,7 +24,7 @@ SwiftLintで私が自作しているカスタムルールを紹介します。
 
 enumのcase名の先頭が大文字より小文字を好むルールです。
 
-//list[enum-lower-case-config][.swiftlint.yml][]{
+//source[][]{
   enum_lower_case:
     name: 'Enum Lower Case'
     regex: '\bcase\s+([A-Z][a-zA-Z0-9]*)\b'
@@ -33,7 +33,7 @@ enumのcase名の先頭が大文字より小文字を好むルールです。
     severity: warning
 //}
 
-//list[enum-lower-case-example][例][swift]{
+//source[][swift]{
 // Non Triggering Examples
 enum Foo {
   case bar
@@ -49,7 +49,7 @@ enum Foo {
 
 classに@<code>{final}を必ず付けるルールです。
 
-//list[final-class-config][.swiftlint.yml][]{
+//source[][]{
   final_class:
     name: 'Final Class'
     regex: '\b(?<!final)\s+(class)\b'
@@ -58,7 +58,7 @@ classに@<code>{final}を必ず付けるルールです。
     severity: warning
 //}
 
-//list[final-class-example][例][swift]{
+//source[][swift]{
 // Non Triggering Examples
 final class Foo {}
 
@@ -72,7 +72,7 @@ final class Foo {}
 
 @<code>{.now}は@<code>{Date()}と同等ですが、@<code>{.now}のほうがわかりやすいので好みです。
 
-//list[date-now-config][.swiftlint.yml][]{
+//source[][]{
   # iOS 15.0+
   date_now:
     name: 'Date Now'
@@ -82,7 +82,7 @@ final class Foo {}
     severity: warning
 //}
 
-//list[date-now-example][例][swift]{
+//source[][swift]{
 // Non Triggering Examples
 let weekday = Calendar.current.component(.weekday, from: .now)
 
@@ -94,7 +94,7 @@ let weekday = Calendar.current.component(.weekday, from: ↓Date())
 
 @<code>{enumerated()}より@<href>{https://github.com/apple/swift-algorithms, swift-algorithms}の@<code>{indexed()}を好むルールです。
 
-//list[enumerated-config][.swiftlint.yml][]{
+//source[][]{
   enumerated:
     name: 'Enumerated'
     regex: '.+\.(enumerated\([^)]*\))'
@@ -103,7 +103,7 @@ let weekday = Calendar.current.component(.weekday, from: ↓Date())
     severity: warning
 //}
 
-//list[enumerated-example][例][swift]{
+//source[][swift]{
 // Non Triggering Examples
 import Algorithms
 ForEach(monsters.indexed(), id: \.element.id) { index, monster in
@@ -122,7 +122,7 @@ ForEach(Array(monsters.↓enumerated()), id: \.element.id) { index, monster in
 
 @<code>{Logger.debug()}は自作の関数なので、必要に応じてメッセージを変更してください。
 
-//list[print-config][.swiftlint.yml][]{
+//source[][]{
   print:
     name: 'Print'
     regex: '\bprint\([^)]*\)'
@@ -131,7 +131,7 @@ ForEach(Array(monsters.↓enumerated()), id: \.element.id) { index, monster in
     severity: warning
 //}
 
-//list[print-example][例][swift]{
+//source[][swift]{
 // Non Triggering Examples
 Logger.debug("Foo")
 
@@ -145,7 +145,7 @@ Logger.debug("Foo")
 
 @<code>{.scaledToFill()}は@<code>{.aspectRatio(contentMode: .fill)}と同等ですが、短いほうが好みです。
 
-//list[aspect-ratio-fill-config][.swiftlint.yml][]{
+//source[][]{
   # iOS 13.0+
   aspect_ratio_fill:
     name: 'Aspect Ratio Fill'
@@ -155,7 +155,7 @@ Logger.debug("Foo")
     severity: warning
 //}
 
-//list[aspect-ratio-fill-example][例][swift]{
+//source[][swift]{
 // Non Triggering Examples
 Image(systemName: "swift")
   .resizable()
@@ -173,7 +173,7 @@ Image(systemName: "swift")
 
 @<code>{aspect_ratio_fill}と同じ理由でルール化しています。
 
-//list[aspect-ratio-fit-config][.swiftlint.yml][]{
+//source[][]{
   # iOS 13.0+
   aspect_ratio_fit:
     name: 'Aspect Ratio Fit'
@@ -183,7 +183,7 @@ Image(systemName: "swift")
     severity: warning
 //}
 
-//list[aspect-ratio-fit-example][例][swift]{
+//source[][swift]{
 // Non Triggering Examples
 Image(systemName: "swift")
   .resizable()
@@ -201,7 +201,7 @@ Image(systemName: "swift")
 
 @<code>{clipShape(RoundedRectangle(cornerRadius:))}に置き換えることが多いです。
 
-//list[corner-radius-config][.swiftlint.yml][]{
+//source[][]{
   # iOS 13.0+
   corner_radius:
     name: 'Corner Radius'
@@ -211,7 +211,7 @@ Image(systemName: "swift")
     severity: warning
 //}
 
-//list[corner-radius-example][例][swift]{
+//source[][swift]{
 // Non Triggering Examples
 Text("Foo")
   .clipShape(RoundedRectangle(cornerRadius: 8))
@@ -225,7 +225,7 @@ Text("Foo")
 
 @<code<{foregroundColor(_:)}は非推奨になったため、@<code<{foregroundStyle(_:)}を好むルールです。
 
-//list[foreground-color-config][.swiftlint.yml][]{
+//source[][]{
   # iOS 15.0+
   foreground_color:
     name: 'Foreground Color'
@@ -235,7 +235,7 @@ Text("Foo")
     severity: warning
 //}
 
-//list[foreground-color-example][例][swift]{
+//source[][swift]{
 // Non Triggering Examples
 Text("Foo")
   .foregroundStyle(.blue)
@@ -249,7 +249,7 @@ Text("Foo")
 
 @<code>{.navigationBarLeading}は非推奨になったため、@<code>{.topBarLeading}を好むルールです。
 
-//list[navigation-bar-leading-config][.swiftlint.yml][]{
+//source[][]{
   # iOS 14.0+
   navigation_bar_leading:
     name: 'Navigation Bar Leading'
@@ -259,7 +259,7 @@ Text("Foo")
     severity: warning
 //}
 
-//list[navigation-bar-leading-example][例][swift]{
+//source[][swift]{
 // Non Triggering Examples
 Text("Foo")
   .toolbar {
@@ -289,7 +289,7 @@ Text("Foo")
 
 @<code>{.navigationBarTrailing}は非推奨になったため、@<code>{.topBarTrailing}を好むルールです。
 
-//list[navigation-bar-trailing-config][.swiftlint.yml][]{
+//source[][]{
   # iOS 14.0+
   navigation_bar_trailing:
     name: 'Navigation Bar Trailing'
@@ -299,7 +299,7 @@ Text("Foo")
     severity: warning
 //}
 
-//list[navigation-bar-trailing-example][例][swift]{
+//source[][swift]{
 // Non Triggering Examples
 Text("Foo")
   .toolbar {
@@ -331,7 +331,7 @@ Text("Foo")
 
 私はできる限りサードパーティ製のライブラリをカプセル化したいため、このようなルールを自作しています。
 
-//list[import-lottie-config][.swiftlint.yml][]{
+//source[][]{
   import_lottie:
     name: 'Import Lottie'
     regex: '\bimport\s+(Lottie)\b'
@@ -340,7 +340,7 @@ Text("Foo")
     severity: warning
 //}
 
-//list[import-lottie-example][例][swift]{
+//source[][swift]{
 // Non Triggering Examples
 import UICore
 

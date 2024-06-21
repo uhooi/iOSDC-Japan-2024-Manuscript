@@ -24,7 +24,7 @@ SwiftLintで私が自作しているカスタムルールを紹介します。
 
 enumのcase名の先頭が大文字より小文字を好むルールです。
 
-//list[enum-lower-case-config][.swiftlint.yml][yaml]{
+//list[enum-lower-case-config][.swiftlint.yml][]{
   enum_lower_case:
     name: 'Enum Lower Case'
     regex: '\bcase\s+([A-Z][a-zA-Z0-9]*)\b'
@@ -49,7 +49,7 @@ enum Foo {
 
 classに@<code>{final}を必ず付けるルールです。
 
-//list[final-class-config][.swiftlint.yml][yaml]{
+//list[final-class-config][.swiftlint.yml][]{
   final_class:
     name: 'Final Class'
     regex: '\b(?<!final)\s+(class)\b'
@@ -72,7 +72,7 @@ final class Foo {}
 
 @<code>{.now}は@<code>{Date()}と同等ですが、@<code>{.now}のほうがわかりやすいので好みです。
 
-//list[date-now-config][.swiftlint.yml][yaml]{
+//list[date-now-config][.swiftlint.yml][]{
   # iOS 15.0+
   date_now:
     name: 'Date Now'
@@ -94,7 +94,7 @@ let weekday = Calendar.current.component(.weekday, from: ↓Date())
 
 @<code>{enumerated()}より@<href>{https://github.com/apple/swift-algorithms, swift-algorithms}の@<code>{indexed()}を好むルールです。
 
-//list[enumerated-config][.swiftlint.yml][yaml]{
+//list[enumerated-config][.swiftlint.yml][]{
   enumerated:
     name: 'Enumerated'
     regex: '.+\.(enumerated\([^)]*\))'
@@ -122,7 +122,7 @@ ForEach(Array(monsters.↓enumerated()), id: \.element.id) { index, monster in
 
 @<code>{Logger.debug()}は自作の関数なので、必要に応じてメッセージを変更してください。
 
-//list[print-config][.swiftlint.yml][yaml]{
+//list[print-config][.swiftlint.yml][]{
   print:
     name: 'Print'
     regex: '\bprint\([^)]*\)'
@@ -145,7 +145,7 @@ Logger.debug("Foo")
 
 @<code>{.scaledToFill()}は@<code>{.aspectRatio(contentMode: .fill)}と同等ですが、短いほうが好みです。
 
-//list[aspect-ratio-fill-config][.swiftlint.yml][yaml]{
+//list[aspect-ratio-fill-config][.swiftlint.yml][]{
   # iOS 13.0+
   aspect_ratio_fill:
     name: 'Aspect Ratio Fill'
@@ -173,7 +173,7 @@ Image(systemName: "swift")
 
 @<code>{aspect_ratio_fill}と同じ理由でルール化しています。
 
-//list[aspect-ratio-fit-config][.swiftlint.yml][yaml]{
+//list[aspect-ratio-fit-config][.swiftlint.yml][]{
   # iOS 13.0+
   aspect_ratio_fit:
     name: 'Aspect Ratio Fit'
@@ -201,7 +201,7 @@ Image(systemName: "swift")
 
 @<code>{clipShape(RoundedRectangle(cornerRadius:))}に置き換えることが多いです。
 
-//list[corner-radius-config][.swiftlint.yml][yaml]{
+//list[corner-radius-config][.swiftlint.yml][]{
   # iOS 13.0+
   corner_radius:
     name: 'Corner Radius'
@@ -225,7 +225,7 @@ Text("Foo")
 
 @<code<{foregroundColor(_:)}は非推奨になったため、@<code<{foregroundStyle(_:)}を好むルールです。
 
-//list[foreground-color-config][.swiftlint.yml][yaml]{
+//list[foreground-color-config][.swiftlint.yml][]{
   # iOS 15.0+
   foreground_color:
     name: 'Foreground Color'
@@ -249,7 +249,7 @@ Text("Foo")
 
 @<code>{.navigationBarLeading}は非推奨になったため、@<code>{.topBarLeading}を好むルールです。
 
-//list[navigation-bar-leading-config][.swiftlint.yml][yaml]{
+//list[navigation-bar-leading-config][.swiftlint.yml][]{
   # iOS 14.0+
   navigation_bar_leading:
     name: 'Navigation Bar Leading'
@@ -289,7 +289,7 @@ Text("Foo")
 
 @<code>{.navigationBarTrailing}は非推奨になったため、@<code>{.topBarTrailing}を好むルールです。
 
-//list[navigation-bar-trailing-config][.swiftlint.yml][yaml]{
+//list[navigation-bar-trailing-config][.swiftlint.yml][]{
   # iOS 14.0+
   navigation_bar_trailing:
     name: 'Navigation Bar Trailing'
@@ -331,7 +331,7 @@ Text("Foo")
 
 私はできる限りサードパーティ製のライブラリをカプセル化したいため、このようなルールを自作しています。
 
-//list[import-lottie-config][.swiftlint.yml][yaml]{
+//list[import-lottie-config][.swiftlint.yml][]{
   import_lottie:
     name: 'Import Lottie'
     regex: '\bimport\s+(Lottie)\b'
